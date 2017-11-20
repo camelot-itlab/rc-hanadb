@@ -13,17 +13,17 @@
   <DataSource id="REG.Regulation">
     <resourceUri>REG.Regulation</resourceUri>
   </DataSource>
-  <DataSource id="MAT.ProductFamily">
-    <resourceUri>MAT.ProductFamily</resourceUri>
-  </DataSource>
-  <DataSource id="MAT.Material">
-    <resourceUri>MAT.Material</resourceUri>
-  </DataSource>
   <DataSource id="BP.BusinessPartner">
     <resourceUri>BP.BusinessPartner</resourceUri>
   </DataSource>
   <DataSource id="BP.BusinessPartnerMaterial">
     <resourceUri>BP.BusinessPartnerMaterial</resourceUri>
+  </DataSource>
+  <DataSource id="MAT.ProductFamily">
+    <resourceUri>MAT.ProductFamily</resourceUri>
+  </DataSource>
+  <DataSource id="MAT.Material">
+    <resourceUri>MAT.Material</resourceUri>
   </DataSource>
   <DataSource id="SUB.Substance">
     <resourceUri>SUB.Substance</resourceUri>
@@ -67,11 +67,7 @@
       </viewAttribute>
       <viewAttribute id="ApplicationAreaDescription">
         <descriptions defaultDescription="Description"/>
-      </viewAttribute>
-      <viewAttribute id="RequestCount" aggregationType="sum">
-        <descriptions defaultDescription="Count"/>
-      </viewAttribute>
-    </viewAttributes>
+      </viewAttribute></viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
     <input node="Request">
@@ -85,9 +81,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DueDate" source="DueDate"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Inbound" source="Inbound"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ComplianceStatus" source="ComplianceStatus"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="RequestCount" source="RequestCount"/>
-    </input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ComplianceStatus" source="ComplianceStatus"/></input>
     <input node="ApplicationArea">
       <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="Description"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ID"/>
@@ -130,11 +124,7 @@
         <descriptions defaultDescription="ComplianceStatus"/>
       </viewAttribute>
     </viewAttributes>
-    <calculatedViewAttributes>
-      <calculatedViewAttribute id="RequestCount" datatype="TINYINT" expressionLanguage="SQL">
-        <formula>1</formula>
-      </calculatedViewAttribute>
-    </calculatedViewAttributes>
+    <calculatedViewAttributes/>
     <restrictedViewAttributes/>
     <input node="REQ.Request">
       <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
@@ -204,17 +194,11 @@
       <viewAttribute id="ApplicationAreaDescription">
         <descriptions defaultDescription="Description"/>
       </viewAttribute>
-      <viewAttribute id="RequestCount" aggregationType="sum">
-        <descriptions defaultDescription="Count"/>
-      </viewAttribute>
       <viewAttribute id="RegulationName">
         <descriptions defaultDescription="Name"/>
       </viewAttribute>
       <viewAttribute id="IsOwned">
         <descriptions defaultDescription="IsOwned"/>
-      </viewAttribute>
-      <viewAttribute id="MaterialCount" aggregationType="sum">
-        <descriptions defaultDescription="MaterialCount"/>
       </viewAttribute>
       <viewAttribute id="BusinessPartnerName">
         <descriptions defaultDescription="Name"/>
@@ -262,12 +246,10 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Inbound" source="Inbound"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ComplianceStatus" source="ComplianceStatus"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="RequestCount" source="RequestCount"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="RegulationName"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="IsOwned" source="IsOwned"/>
     </input>
     <input node="Join_8">
-      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCount" source="MaterialCount"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialStatus" source="BusinessPartnerMaterialStatus"/>
@@ -322,9 +304,6 @@
       <viewAttribute id="ApplicationAreaDescription">
         <descriptions defaultDescription="Description"/>
       </viewAttribute>
-      <viewAttribute id="RequestCount" aggregationType="sum">
-        <descriptions defaultDescription="Count"/>
-      </viewAttribute>
       <viewAttribute id="RegulationName">
         <descriptions defaultDescription="Name"/>
       </viewAttribute>
@@ -346,9 +325,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="DueDate" source="DueDate"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Inbound" source="Inbound"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ComplianceStatus" source="ComplianceStatus"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="RequestCount" source="RequestCount"/>
-    </input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/></input>
     <input node="Regulation">
       <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="Name"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="IsOwned" source="IsOwned"/>
@@ -358,9 +335,6 @@
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_8" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
-      <viewAttribute id="MaterialCount" aggregationType="sum">
-        <descriptions defaultDescription="MaterialCount"/>
-      </viewAttribute>
     
       <viewAttribute id="BusinessPartnerName">
         <descriptions defaultDescription="Name"/>
@@ -415,7 +389,6 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Criticality" source="Criticality"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Icon" source="Icon"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyName" source="ProductFamilyName"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCount" source="MaterialCount"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
     </input>
     <joinAttribute name="MaterialID"/>
@@ -439,6 +412,38 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Name" source="Name"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="IsOwned" source="IsOwned"/>
     </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerMaterialStatus">
+        <descriptions defaultDescription="Status"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialStatus" source="BusinessPartnerMaterialStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+    </input>
+    <joinAttribute name="BusinessPartnerID"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="C1_1" joinType="rightOuter">
     <viewAttributes>
@@ -466,9 +471,6 @@
       <viewAttribute id="MaterialID">
         <descriptions defaultDescription="ID"/>
       </viewAttribute>
-      <viewAttribute id="MaterialCount" aggregationType="sum">
-        <descriptions defaultDescription="MaterialCount"/>
-      </viewAttribute>
       <viewAttribute hidden="true" id="JOIN$ID$ProductFamilyID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -485,10 +487,49 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="MaterialStatus" source="MaterialStatus"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Criticality" source="Criticality"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Icon" source="Icon"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCount" source="MaterialCount"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$ProductFamilyID" source="ProductFamilyID"/>
     </input>
     <joinAttribute name="JOIN$ID$ProductFamilyID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="BP.BusinessPartner">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="Email"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerMaterialStatus">
+        <descriptions defaultDescription="Status"/>
+      </viewAttribute>
+    
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute></viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="BP.BusinessPartnerMaterial">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialStatus" source="Status"/>
+    </input>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="ProductFamily">
     <viewAttributes>
@@ -530,11 +571,7 @@
         <descriptions defaultDescription="Icon"/>
       </viewAttribute>
     </viewAttributes>
-    <calculatedViewAttributes>
-      <calculatedViewAttribute id="MaterialCount" datatype="TINYINT" expressionLanguage="SQL">
-        <formula>1</formula>
-      </calculatedViewAttribute>
-    </calculatedViewAttributes>
+    <calculatedViewAttributes/>
     <restrictedViewAttributes/>
     <input node="MAT.Material">
       <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
@@ -545,78 +582,6 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Criticality" source="Criticality"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="Icon" source="Icon"/>
     </input>
-  </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
-    <viewAttributes>
-      <viewAttribute id="BusinessPartnerID">
-        <descriptions defaultDescription="ID"/>
-      </viewAttribute>
-      <viewAttribute id="BusinessPartnerName">
-        <descriptions defaultDescription="Name"/>
-      </viewAttribute>
-      <viewAttribute id="BusinessPartnerEmail">
-        <descriptions defaultDescription="Email"/>
-      </viewAttribute>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
-    <input node="BP.BusinessPartner">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="Name"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="Email"/>
-    </input>
-  </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
-    <viewAttributes>
-      <viewAttribute id="BusinessPartnerID">
-        <descriptions defaultDescription="BusinessPartnerID"/>
-      </viewAttribute>
-      <viewAttribute id="MaterialID">
-        <descriptions defaultDescription="MaterialID"/>
-      </viewAttribute>
-      <viewAttribute id="BusinessPartnerMaterialStatus">
-        <descriptions defaultDescription="Status"/>
-      </viewAttribute>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
-    <input node="BP.BusinessPartnerMaterial">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialStatus" source="Status"/>
-    </input>
-  </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="C1_1" joinType="leftOuter">
-    <viewAttributes>
-      <viewAttribute id="BusinessPartnerID">
-        <descriptions defaultDescription="ID"/>
-      </viewAttribute>
-      <viewAttribute id="BusinessPartnerName">
-        <descriptions defaultDescription="Name"/>
-      </viewAttribute>
-      <viewAttribute id="BusinessPartnerEmail">
-        <descriptions defaultDescription="Email"/>
-      </viewAttribute>
-      <viewAttribute id="MaterialID">
-        <descriptions defaultDescription="MaterialID"/>
-      </viewAttribute>
-      <viewAttribute id="BusinessPartnerMaterialStatus">
-        <descriptions defaultDescription="Status"/>
-      </viewAttribute>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <restrictedViewAttributes/>
-    <input node="Projection_1">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
-    </input>
-    <input node="Projection_2">
-      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialStatus" source="BusinessPartnerMaterialStatus"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
-    </input>
-    <joinAttribute name="BusinessPartnerID"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_9" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
@@ -656,17 +621,11 @@
       <viewAttribute id="ApplicationAreaDescription">
         <descriptions defaultDescription="Description"/>
       </viewAttribute>
-      <viewAttribute id="RequestCount" aggregationType="sum">
-        <descriptions defaultDescription="Count"/>
-      </viewAttribute>
       <viewAttribute id="RegulationName">
         <descriptions defaultDescription="Name"/>
       </viewAttribute>
       <viewAttribute id="IsOwned">
         <descriptions defaultDescription="IsOwned"/>
-      </viewAttribute>
-      <viewAttribute id="MaterialCount" aggregationType="sum">
-        <descriptions defaultDescription="MaterialCount"/>
       </viewAttribute>
       <viewAttribute id="BusinessPartnerName">
         <descriptions defaultDescription="Name"/>
@@ -720,10 +679,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="Inbound" source="Inbound"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ComplianceStatus" source="ComplianceStatus"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="RequestCount" source="RequestCount"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="RegulationName"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="IsOwned" source="IsOwned"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCount" source="MaterialCount"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialStatus" source="BusinessPartnerMaterialStatus"/>
@@ -813,88 +770,98 @@
       <descriptions defaultDescription="Description"/>
       <keyMapping columnObjectName="Join_9" columnName="ApplicationAreaDescription"/>
     </attribute>
-    <attribute id="RegulationName" order="14" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="RegulationName" order="13" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Name"/>
       <keyMapping columnObjectName="Join_9" columnName="RegulationName"/>
     </attribute>
-    <attribute id="IsOwned" order="15" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="IsOwned" order="14" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="IsOwned"/>
       <keyMapping columnObjectName="Join_9" columnName="IsOwned"/>
     </attribute>
-    <attribute id="BusinessPartnerName" order="17" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="BusinessPartnerName" order="15" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Name"/>
       <keyMapping columnObjectName="Join_9" columnName="BusinessPartnerName"/>
     </attribute>
-    <attribute id="BusinessPartnerEmail" order="18" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="BusinessPartnerEmail" order="16" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Email"/>
       <keyMapping columnObjectName="Join_9" columnName="BusinessPartnerEmail"/>
     </attribute>
-    <attribute id="BusinessPartnerMaterialStatus" order="19" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="BusinessPartnerMaterialStatus" order="17" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Status"/>
       <keyMapping columnObjectName="Join_9" columnName="BusinessPartnerMaterialStatus"/>
     </attribute>
-    <attribute id="Description" order="20" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Description" order="18" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Description"/>
       <keyMapping columnObjectName="Join_9" columnName="Description"/>
     </attribute>
-    <attribute id="ProductFamilyID" order="21" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ProductFamilyID" order="19" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ProductFamilyID"/>
       <keyMapping columnObjectName="Join_9" columnName="ProductFamilyID"/>
     </attribute>
-    <attribute id="SupplyType" order="22" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SupplyType" order="20" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SupplyType"/>
       <keyMapping columnObjectName="Join_9" columnName="SupplyType"/>
     </attribute>
-    <attribute id="MaterialStatus" order="23" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="MaterialStatus" order="21" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Status"/>
       <keyMapping columnObjectName="Join_9" columnName="MaterialStatus"/>
     </attribute>
-    <attribute id="Criticality" order="24" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Criticality" order="22" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Criticality"/>
       <keyMapping columnObjectName="Join_9" columnName="Criticality"/>
     </attribute>
-    <attribute id="Icon" order="25" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Icon" order="23" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Icon"/>
       <keyMapping columnObjectName="Join_9" columnName="Icon"/>
     </attribute>
-    <attribute id="ProductFamilyName" order="26" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ProductFamilyName" order="24" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Name"/>
       <keyMapping columnObjectName="Join_9" columnName="ProductFamilyName"/>
     </attribute>
-    <attribute id="CAS" order="27" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CAS" order="25" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CAS"/>
       <keyMapping columnObjectName="Join_9" columnName="CAS"/>
     </attribute>
-    <attribute id="SubstanceName" order="28" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SubstanceName" order="26" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Name"/>
       <keyMapping columnObjectName="Join_9" columnName="SubstanceName"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
-  <baseMeasures>
-    <measure id="RequestCount" order="13" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="Count"/>
-      <measureMapping columnObjectName="Join_9" columnName="RequestCount"/>
-    </measure>
-    <measure id="MaterialCount" order="16" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="MaterialCount"/>
-      <measureMapping columnObjectName="Join_9" columnName="MaterialCount"/>
-    </measure>
-  </baseMeasures>
-  <calculatedMeasures/>
+  <baseMeasures/>
+  <calculatedMeasures>
+    <measure id="MaterialCount" order="27" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER">
+      <descriptions defaultDescription="COUNT"/>
+      <exceptionAggregation>
+        <attribute attributeName="MaterialID"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+    <measure id="RequestCount" order="28" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER">
+      <descriptions defaultDescription="RequestCount"/>
+      <exceptionAggregation>
+        <attribute attributeName="BusinessPartnerID"/>
+        <attribute attributeName="MaterialID"/>
+        <attribute attributeName="RegulationID"/>
+        <attribute attributeName="ApplicationAreaID"/>
+        <attribute attributeName="SubstanceID"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+  </calculatedMeasures>
   <restrictedMeasures/>
   <localDimensions/>
 </logicalModel>
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="785.8650752889158" y="112"/>
+      <upperLeftCorner x="785" y="112"/>
     
       <rectangleSize width="140"/>
     </shape>
   
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="115.33333333333337" y="636.9999964237213"/>
+      <upperLeftCorner x="115" y="636"/>
       <rectangleSize height="30" width="140"/>
     </shape>
     <shape modelObjectName="Request" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
@@ -906,15 +873,15 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Request" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="282" y="776.9999952316284"/>
+      <upperLeftCorner x="282" y="776"/>
       <rectangleSize height="30" width="140"/>
     </shape>
     <shape expanded="true" modelObjectName="ApplicationArea" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="776.9999952316284"/>
+      <upperLeftCorner x="92" y="776"/>
       <rectangleSize height="30" width="140"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="432.1321267462283" y="356.9999988079071"/>
+      <upperLeftCorner x="432" y="356"/>
       <rectangleSize height="30" width="140"/>
     </shape>
     <shape modelObjectName="Join_6" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
@@ -926,7 +893,7 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="408.79879341289495" y="496.9999976158142"/>
+      <upperLeftCorner x="408" y="496"/>
       <rectangleSize height="30" width="140"/>
     </shape>
     <shape modelObjectName="Join_2" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
@@ -938,7 +905,7 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="645.4654600795616" y="496.9999976158142"/>
+      <upperLeftCorner x="645" y="496"/>
       <rectangleSize height="30" width="140"/>
     </shape>
     <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
@@ -950,40 +917,11 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Regulation" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="432.13212674622827" y="636.9999964237213"/>
-      <rectangleSize height="30" width="140"/>
-    </shape>
-  
-    <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="638.6666666666665" y="636.9999964237213"/>
-      <rectangleSize height="30" width="140"/>
-    </shape>
-    <shape modelObjectName="ProductFamily" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="250"/>
-    </shape>
-    <shape modelObjectName="Material" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="250"/>
-    </shape>
-    <shape expanded="true" modelObjectName="ProductFamily" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="661.9999999999999" y="776.9999952316284"/>
-      <rectangleSize height="30" width="140"/>
-    </shape>
-    <shape expanded="true" modelObjectName="Material" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="471.99999999999994" y="776.9999952316284"/>
-      <rectangleSize height="30" width="140"/>
-    </shape>
-    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1042" y="776.9999952316284"/>
-      <rectangleSize height="30" width="140"/>
-    </shape>
-    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="852" y="776.9999952316284"/>
+      <upperLeftCorner x="432" y="636"/>
       <rectangleSize height="30" width="140"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="866.4646256727008" y="636.9999964237213"/>
+      <upperLeftCorner x="866" y="636"/>
       <rectangleSize height="30" width="140"/>
     </shape>
     <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
@@ -994,8 +932,37 @@
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="250"/>
     </shape>
+  
+    <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="638" y="636"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="ProductFamily" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Material" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1042" y="776"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="852" y="776"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="ProductFamily" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="661" y="776"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Material" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="471" y="776"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
     <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="785.8650752889158" y="217"/>
+      <upperLeftCorner x="785" y="217"/>
       <rectangleSize height="30" width="140"/>
     </shape>
     <shape modelObjectName="Join_3" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
@@ -1007,7 +974,7 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="809.1984086222491" y="356.9999988079071"/>
+      <upperLeftCorner x="809" y="356"/>
       <rectangleSize height="30" width="140"/>
     </shape>
   </shapes>

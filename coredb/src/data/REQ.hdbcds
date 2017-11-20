@@ -13,14 +13,16 @@ context REQ {
                 key RegulationID: EPM.BusinessKey;
                 key ApplicationAreaID: EPM.BusinessKey;
                 key SubstanceID: EPM.BusinessKey;
+                key RegulationChangeNo: EPM.IntegerT;
+                key MaterialRegulationChangeNo: EPM.IntegerT;
                 RequestStatus: EPM.StatusT;
                 RequestDate: EPM.SDate;
                 ResponseDate: EPM.SDate;
                 DueDate: EPM.SDate;
                 Inbound: String(1);
                 ComplianceStatus: EPM.SString;
-                toMaterialRegulationChange: Association to REG.MaterialRegulationChange on toMaterialRegulationChange.RegulationID = RegulationID and toMaterialRegulationChange.ApplicationAreaID = ApplicationAreaID and toMaterialRegulationChange.SubstanceID = SubstanceID;
-                toRegulationChange: Association to REG.RegulationChange on toRegulationChange.RegulationID = RegulationID and toRegulationChange.ApplicationAreaID = ApplicationAreaID and toRegulationChange.SubstanceID = SubstanceID;
+                toMaterialRegulationChange: Association to REG.MaterialRegulationChange on toMaterialRegulationChange.RegulationID = RegulationID and toMaterialRegulationChange.ApplicationAreaID = ApplicationAreaID and toMaterialRegulationChange.SubstanceID = SubstanceID and toMaterialRegulationChange.MaterialRegulationChangeNo = MaterialRegulationChangeNo;
+                toRegulationChange: Association to REG.RegulationChange on toRegulationChange.RegulationID = RegulationID and toRegulationChange.ApplicationAreaID = ApplicationAreaID and toRegulationChange.SubstanceID = SubstanceID and toRegulationChange.RegulationChangeNo = RegulationChangeNo;
                 toSubstance: Association to SUB.Substance on toSubstance.ID = SubstanceID;
                 toMaterial: Association to MAT.Material on toMaterial.ID = MaterialID;
                 toBusinessPartner: Association to BP.BusinessPartner on toBusinessPartner.ID = BusinessPartnerID;

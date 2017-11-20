@@ -1,3 +1,3 @@
-MaterialID,RegulationID,ApplicationAreaID,SubstanceID,Status
-FA-507,EUR,CHILD,0000077-92-9-02,Pending
-FA-507,EUR,CHILD,0000077-92-9-01,Ok
+MaterialID,RegulationID,ApplicationAreaID,SubstanceID,RegulationChangeNo,MaterialRegulationChangeNo,Status,ChangeDate,ChangedBy,NewThreshold,OldThreshold,NewUoM,OldUoM
+FA-507,EUR,CHILD,0000077-92-9-02,1,1,Pending,2017-11-01,Michael Jung,1.5,2,%,%
+FA-507,EUR,CHILD,0000077-92-9-01,1,1,Ok,2017-09-01,Michael Jung,2,,%,

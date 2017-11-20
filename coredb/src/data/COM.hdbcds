@@ -8,7 +8,7 @@ context COM {
         entity Composition {
                 key MaterialID: EPM.BusinessKey;
                 key SubstanceID: EPM.BusinessKey;
-                Type: EPM.SString;
+                key Type: EPM.BusinessKey;
                 Quantity: EPM.QuantityT;
                 UoM: EPM.UnitT;
                 toMaterial: Association to MAT.Material on toMaterial.ID = MaterialID;

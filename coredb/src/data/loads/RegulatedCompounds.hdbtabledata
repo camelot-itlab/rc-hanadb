@@ -130,7 +130,7 @@
             },
             "import_settings": {
                 "import_columns": [
-                    "RegulationID","ApplicationAreaID","SubstanceID","ChangeDate","ChangedBy","NewThreshold","OldThreshold","NewUoM","OldUoM"
+                    "RegulationID","ApplicationAreaID","SubstanceID","RegulationChangeNo","Status","ChangeDate","ChangedBy","NewThreshold","OldThreshold","NewUoM","OldUoM"
                 ]
             }
         },  {
@@ -142,7 +142,7 @@
             },
             "import_settings": {
                 "import_columns": [
-                    "MaterialID","RegulationID","ApplicationAreaID","SubstanceID","Status"
+                    "MaterialID","RegulationID","ApplicationAreaID","SubstanceID","RegulationChangeNo","MaterialRegulationChangeNo","Status","ChangeDate","ChangedBy","NewThreshold","OldThreshold","NewUoM","OldUoM"
                 ]
             }
         },  {
@@ -166,7 +166,7 @@
             },
             "import_settings": {
                 "import_columns": [
-                    "BusinessPartnerID","MaterialID","RegulationID","ApplicationAreaID","SubstanceID","RequestStatus","RequestDate","ResponseDate","DueDate","Inbound","ComplianceStatus"
+                    "BusinessPartnerID","MaterialID","RegulationID","ApplicationAreaID","SubstanceID","RegulationChangeNo","MaterialRegulationChangeNo","RequestStatus","RequestDate","ResponseDate","DueDate","Inbound","ComplianceStatus"
                 ]
             }
         }

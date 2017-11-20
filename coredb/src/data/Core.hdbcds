@@ -1,6 +1,7 @@
 context Core {
 
 type BusinessKey : String(40);
+type IntegerT : Integer;
 //SP09 requirement - HANA Primitive datatype  
 type SString  : hana.VARCHAR(40);
 type MString  : String(60);

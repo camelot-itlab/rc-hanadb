@@ -38,6 +38,7 @@ context REG {
                 key RegulationID: EPM.BusinessKey;
                 key ApplicationAreaID: EPM.BusinessKey;
                 key SubstanceID: EPM.BusinessKey;
+                key RegulationChangeNo: EPM.IntegerT;
                 Status: EPM.StatusT;
                 ChangeDate: EPM.SDate;
                 ChangedBy: EPM.SString;
@@ -47,7 +48,7 @@ context REG {
                 OldUoM: EPM.UnitT;
                 toConditionOfUse: Association to ConditionOfUse on toConditionOfUse.RegulationID = RegulationID and toConditionOfUse.ApplicationAreaID = ApplicationAreaID;
                 toSubstance: Association to SUB.Substance on toSubstance.ID = SubstanceID;
-                toMaterialRegulationChanges: Association[*] to MaterialRegulationChange on toMaterialRegulationChanges.RegulationID = RegulationID and toMaterialRegulationChanges.ApplicationAreaID = ApplicationAreaID and toMaterialRegulationChanges.SubstanceID = SubstanceID;
+                toMaterialRegulationChanges: Association[*] to MaterialRegulationChange on toMaterialRegulationChanges.RegulationID = RegulationID and toMaterialRegulationChanges.ApplicationAreaID = ApplicationAreaID and toMaterialRegulationChanges.SubstanceID = SubstanceID and toMaterialRegulationChanges.RegulationChangeNo = RegulationChangeNo;
         };
 
         entity MaterialRegulationChange {
@@ -55,13 +56,21 @@ context REG {
                 key RegulationID: EPM.BusinessKey;
                 key ApplicationAreaID: EPM.BusinessKey;
                 key SubstanceID: EPM.BusinessKey;
+                key MaterialRegulationChangeNo: EPM.Integer;
+                RegulationChangeNo: EPM.IntegerT;
                 Status: EPM.StatusT;
+                ChangeDate: EPM.SDate;
+                ChangedBy: EPM.SString;
+                NewThreshold: EPM.QuantityT;
+                OldThreshold: EPM.QuantityT;
+                NewUoM: EPM.UnitT;                
+                OldUoM: EPM.UnitT;
                 toConditionOfUse: Association to ConditionOfUse on toConditionOfUse.RegulationID = RegulationID and toConditionOfUse.ApplicationAreaID = ApplicationAreaID;
                 toSubstanceRegulation: Association to SubstanceRegulation on toSubstanceRegulation.RegulationID = RegulationID and toSubstanceRegulation.ApplicationAreaID = ApplicationAreaID and toSubstanceRegulation.SubstanceID = SubstanceID;
-                toRegulationChange: Association to RegulationChange on toRegulationChange.RegulationID = RegulationID and toRegulationChange.ApplicationAreaID = ApplicationAreaID and toRegulationChange.SubstanceID = SubstanceID;
+                toRegulationChange: Association to RegulationChange on toRegulationChange.RegulationID = RegulationID and toRegulationChange.ApplicationAreaID = ApplicationAreaID and toRegulationChange.SubstanceID = SubstanceID and toRegulationChange.RegulationChangeNo = RegulationChangeNo;
                 toSubstance: Association to SUB.Substance on toSubstance.ID = SubstanceID;
                 toMaterial: Association to MAT.Material on toMaterial.ID = MaterialID;
-                toRequests: Association[*] to REQ.Request on toRequests.MaterialID = MaterialID and toRequests.RegulationID = RegulationID and toRequests.ApplicationAreaID = ApplicationAreaID and toRequests.SubstanceID = SubstanceID;
+                toRequests: Association[*] to REQ.Request on toRequests.MaterialID = MaterialID and toRequests.RegulationID = RegulationID and toRequests.ApplicationAreaID = ApplicationAreaID and toRequests.SubstanceID = SubstanceID and toRequests.MaterialRegulationChangeNo = MaterialRegulationChangeNo;
         };
 
         entity SubstanceRegulation {
