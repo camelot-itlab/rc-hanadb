@@ -1,0 +1,29 @@
+using Core as EPM;
+using MAT;
+using SUB;
+using REG;
+using BP;
+
+@OData.publish : true
+context REQ {
+
+        entity Request {
+                key BusinessPartnerID: EPM.BusinessKey;
+                key MaterialID: EPM.BusinessKey;
+                key RegulationID: EPM.BusinessKey;
+                key ApplicationAreaID: EPM.BusinessKey;
+                key SubstanceID: EPM.BusinessKey;
+                RequestStatus: EPM.StatusT;
+                RequestDate: EPM.SDate;
+                ResponseDate: EPM.SDate;
+                DueDate: EPM.SDate;
+                Inbound: String(1);
+                ComplianceStatus: EPM.SString;
+                toMaterialRegulationChange: Association to REG.MaterialRegulationChange on toMaterialRegulationChange.RegulationID = RegulationID and toMaterialRegulationChange.ApplicationAreaID = ApplicationAreaID and toMaterialRegulationChange.SubstanceID = SubstanceID;
+                toRegulationChange: Association to REG.RegulationChange on toRegulationChange.RegulationID = RegulationID and toRegulationChange.ApplicationAreaID = ApplicationAreaID and toRegulationChange.SubstanceID = SubstanceID;
+                toSubstance: Association to SUB.Substance on toSubstance.ID = SubstanceID;
+                toMaterial: Association to MAT.Material on toMaterial.ID = MaterialID;
+                toBusinessPartner: Association to BP.BusinessPartner on toBusinessPartner.ID = BusinessPartnerID;
+        };
+
+};

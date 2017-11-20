@@ -1,0 +1,50 @@
+using Core as EPM;
+using REG;
+using COM;
+using BP;
+using REQ;
+
+@OData.publish : true
+context MAT {
+
+        entity ProductFamily {                
+                key ID: EPM.BusinessKey;
+                Name: EPM.SString;
+                toMaterials: Association[*] to Material on toMaterials.ProductFamilyID = ID;
+        }
+
+        entity Material {
+                key ID: EPM.BusinessKey;
+                Description: EPM.LString;
+                ProductFamilyID: EPM.BusinessKey;
+                SupplyType: EPM.SString;
+                Status: EPM.StatusT;
+                Criticality: EPM.CriticalityT;
+                Icon: EPM.IconT;
+                toProductFamily: Association to ProductFamily on toProductFamily.ID = ProductFamilyID;
+                toBillOfMaterials: Association[*] to BillOfMaterial on toBillOfMaterials.MaterialID = ID;
+                toMaterialUsages: Association[*] to MaterialUsage on toMaterialUsages.MaterialID = ID;
+                toCompositions: Association[*] to COM.Composition on toCompositions.MaterialID = ID;
+                toBusinessPartnerMaterials: Association[*] to BP.BusinessPartnerMaterial on toBusinessPartnerMaterials.MaterialID = ID;
+                toMaterialRegulationChanges: Association[*] to REG.MaterialRegulationChange on toMaterialRegulationChanges.MaterialID = ID;
+                toRequests: Association[*] to REQ.Request on toRequests.MaterialID = ID;
+        };
+        
+        entity BillOfMaterial {
+        		key ID: EPM.BusinessKey;
+        		key MaterialID: EPM.BusinessKey;
+        		toMaterial: Association to Material on toMaterial.ID = MaterialID;
+        };
+
+        entity MaterialUsage {
+                key MaterialID: EPM.BusinessKey;
+                key RegulationID: EPM.BusinessKey;
+                key ApplicationAreaID: EPM.BusinessKey;
+                Status: EPM.StatusT;
+                Criticality: EPM.CriticalityT;
+                Icon: EPM.IconT;
+                toMaterial: Association to Material on toMaterial.ID = MaterialID;
+                toConditionOfUse: Association to REG.ConditionOfUse on toConditionOfUse.RegulationID = RegulationID and toConditionOfUse.ApplicationAreaID = ApplicationAreaID;
+        };
+
+};

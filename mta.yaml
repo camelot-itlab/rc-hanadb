@@ -1,0 +1,42 @@
+ID: bcrc
+_schema-version: '2.0'
+version: 0.0.1
+
+modules:
+ 
+
+ 
+
+
+ - name: coredb_bcrc
+   type: hdb
+   path: coredb
+   requires:
+    - name: hdi_coredb_bcrc
+
+resources:
+ - name: hdi_coredb
+   parameters:
+      config:
+         schema: BCRC
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+
+ - name: hdi_coredb_2
+   parameters:
+      config:
+         schema: BCRC
+   properties:
+      hdi-container-name_2: ${service-name}
+   type: com.sap.xs.hdi-container
+
+
+ - name: hdi_coredb_bcrc
+   parameters:
+      config:
+         schema: BCRC
+   properties:
+      hdi-container-name_3: ${service-name}
+   type: com.sap.xs.hdi-container
+

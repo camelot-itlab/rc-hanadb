@@ -1,0 +1,15 @@
+MaterialID,RegulationID,ApplicationAreaID,Status,Criticality,Icon
+FA-125,US,CHILD,Ok,Success,sap-icon://status-positive
+FA-127,EUR,CHILD,New Regulation,Warning,sap-icon://to-be-reviewed
+FA-307,EUR,CHILD,New Regulation,Warning,sap-icon://to-be-reviewed
+FA-507,EUR,CHILD,New Regulation,Warning,sap-icon://to-be-reviewed
+FA-305,US,CHILD,Pending Request(s),Warning,sap-icon://status-in-process
+FA-505,US,CHILD,Ok,Success,sap-icon://status-positive
+FA-125,HEN,CHILD,Ok,Success,sap-icon://status-positive
+FA-127,HEN,CHILD,Ok,Success,sap-icon://status-positive
+FA-307,HEN,CHILD,Ok,Success,sap-icon://status-positive
+FA-507,HEN,CHILD,Ok,Success,sap-icon://status-positive
+FA-305,HEN,CHILD,Ok,Success,sap-icon://status-positive
+FA-505,HEN,CHILD,Ok,Success,sap-icon://status-positive
+PACK-507,EUR,CHILD,New Regulation,Warning,sap-icon://to-be-reviewed
+PACK-507,HEN,CHILD,New Regulation,Warning,sap-icon://to-be-reviewed

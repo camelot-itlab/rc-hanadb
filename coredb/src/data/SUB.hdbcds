@@ -1,0 +1,13 @@
+using Core as EPM;
+using COM;
+
+@OData.publish : true
+context SUB {
+
+        entity Substance {
+                key ID: EPM.BusinessKey;
+                CAS: EPM.SString;
+                Name: EPM.SString;    
+                toCompositions: Association[*] to COM.Composition on toCompositions.SubstanceID = ID;
+        };
+};

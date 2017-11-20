@@ -1,0 +1,16 @@
+using Core as EPM;
+
+@OData.publish : true
+context STAT {
+
+        entity RegulationStatus {
+                key ID: EPM.BusinessKey;
+                Name: String(40);
+        };
+
+        entity ComplianceStatus {
+                key ID: EPM.BusinessKey;
+                Name: String(40);
+        };
+
+};

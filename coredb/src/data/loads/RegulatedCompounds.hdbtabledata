@@ -1,0 +1,174 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "BP.BusinessPartner",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "businessPartners.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "ID","Name","Email"
+                ]
+            }
+        },  {
+            "target_table": "BP.BusinessPartnerMaterial",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "businessPartnerMaterials.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "BusinessPartnerID","MaterialID","Status"
+                ]
+            }
+        },  {
+            "target_table": "SUB.Substance",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "substances.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "ID","CAS","Name"
+                ]
+            }
+        },  {
+            "target_table": "MAT.ProductFamily",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "productFamilies.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "ID","Name"
+                ]
+            }
+        },  {
+            "target_table": "MAT.Material",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "materials.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "ID","Description","ProductFamilyID","SupplyType","Status","Criticality","Icon"
+                ]
+            }
+        },  {
+            "target_table": "MAT.MaterialUsage",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "materialUsages.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "MaterialID","RegulationID","ApplicationAreaID","Status","Criticality","Icon"
+                ]
+            }
+        },  {
+            "target_table": "COM.Composition",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "compositions.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                   "MaterialID","SubstanceID","Type","Quantity","UoM"
+                ]
+            }
+        },  {
+            "target_table": "REG.Regulation",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "regulations.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "ID","Name"
+                ]
+            }
+        },  {
+            "target_table": "REG.ApplicationArea",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "applicationAreas.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "ID","Description"
+                ]
+            }
+        },  {
+            "target_table": "REG.ConditionOfUse",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "conditionsOfUse.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "RegulationID","ApplicationAreaID","RegulationProp","ApplicationAreaProp","LastChangedBy","LastChangeDate"
+                ]
+            }
+        },  {
+            "target_table": "REG.RegulationChange",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "regulationChanges.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "RegulationID","ApplicationAreaID","SubstanceID","ChangeDate","ChangedBy","NewThreshold","OldThreshold","NewUoM","OldUoM"
+                ]
+            }
+        },  {
+            "target_table": "REG.MaterialRegulationChange",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "materialRegulationChanges.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "MaterialID","RegulationID","ApplicationAreaID","SubstanceID","Status"
+                ]
+            }
+        },  {
+            "target_table": "REG.SubstanceRegulation",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "substanceRegulations.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "RegulationID","ApplicationAreaID","SubstanceID","Threshold","UoM","Sign"
+                ]
+            }
+        },  {
+            "target_table": "REQ.Request",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "requests.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "BusinessPartnerID","MaterialID","RegulationID","ApplicationAreaID","SubstanceID","RequestStatus","RequestDate","ResponseDate","DueDate","Inbound","ComplianceStatus"
+                ]
+            }
+        }
+    ]
+}

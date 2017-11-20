@@ -1,0 +1,24 @@
+using Core as EPM;
+using MAT;
+using REQ;
+
+@OData.publish : true
+context BP {
+
+        entity BusinessPartner {
+                key ID: EPM.BusinessKey;
+                Name: String(40);
+                Email: String(255);
+                toBusinessPartnerMaterials: Association[*] to BusinessPartnerMaterial on toBusinessPartnerMaterials.BusinessPartnerID = ID;
+                toRequests: Association[*] to REQ.Request on toRequests.BusinessPartnerID = ID;
+        };
+
+        entity BusinessPartnerMaterial {
+                key BusinessPartnerID: EPM.BusinessKey;
+                key MaterialID: EPM.BusinessKey;
+                Status: EPM.StatusT;
+                toBusinessPartner: Association to BusinessPartner on toBusinessPartner.ID = BusinessPartnerID;
+                toMaterial: Association to MAT.Material on toMaterial.ID = MaterialID;
+        };
+
+};

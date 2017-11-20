@@ -1,0 +1,10 @@
+ID,Description,ProductFamilyID,SupplyType,Status,Criticality,Icon
+FA-125,FA Children 12+ US,PF-1,Manufactured,New Regulation,Warning,sap-icon://status-in-process
+FA-127,FA Children 12+ EUR,PF-1,Manufactured,New Regulation,Warning,sap-icon://status-in-process
+FA-305,FA Children 3+ US,PF-1,Manufactured,New Regulation,Warning,sap-icon://status-in-process
+FA-307,FA Children 3+ EUR,PF-1,Manufactured,New Regulation,Warning,sap-icon://status-in-process
+FA-505,FA Children 6+ US,PF-1,Manufactured,New Regulation,Warning,sap-icon://status-in-process
+FA-507,FA Children 6+ EUR,PF-1,Manufactured,New Regulation,Warning,sap-icon://status-in-process
+PACK-507,Label FA Children 6+ EUR,PF-2,Purchased,New Regulation,Warning,sap-icon://status-in-process
+SFG-507,FA Lotion 6+,PF-1 Raw,Manufactured,New Regulation,Warning,sap-icon://status-in-process
+BOT-250,Bottle 250ml,PF-2,Purchased,Ok,Success,sap-icon://status-positive

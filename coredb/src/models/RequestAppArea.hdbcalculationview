@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="bcrc.ipdci.coredb.data.models::RequestAppArea" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Requests for Application Area"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="REQ.Request">
+    <resourceUri>REQ.Request</resourceUri>
+  </DataSource>
+  <DataSource id="REG.ApplicationArea">
+    <resourceUri>REG.ApplicationArea</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <viewAttributes>
+      <viewAttribute id="Description">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="Count" aggregationType="sum">
+        <descriptions defaultDescription="Count"/>
+      </viewAttribute>
+    
+      <viewAttribute id="ID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+    
+      <viewAttribute id="Inbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Description" source="Description"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Count" source="Count"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="Inbound" source="Inbound"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="Description">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+      <viewAttribute id="Inbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+      <viewAttribute hidden="true" id="JOIN$ApplicationAreaID$ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="Count" datatype="TINYINT" expressionLanguage="SQL">
+        <formula>1</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <restrictedViewAttributes/>
+    <input node="REQ.Request">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Inbound" source="Inbound"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ApplicationAreaID$ID" source="ApplicationAreaID"/>
+    </input>
+    <input node="REG.ApplicationArea">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Description" source="Description"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ApplicationAreaID$ID" source="ID"/>
+    </input>
+    <joinAttribute name="JOIN$ApplicationAreaID$ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Aggregation_1">
+  <attributes>
+    <attribute id="Description" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Description"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="Description"/>
+    </attribute>
+  
+    <attribute id="ID" key="true" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+  
+      <keyMapping columnObjectName="Aggregation_1" columnName="ID"/>
+  
+    </attribute>
+  
+    <attribute id="Inbound" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Inbound"/>
+  
+      <keyMapping columnObjectName="Aggregation_1" columnName="Inbound"/>
+  
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="Count" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Count"/>
+      <measureMapping columnObjectName="Aggregation_1" columnName="Count"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="322"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="REQ.Request" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="REG.ApplicationArea" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>

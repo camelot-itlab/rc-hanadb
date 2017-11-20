@@ -1,0 +1,79 @@
+using Core as EPM;
+using SUB;
+using MAT;
+using REQ;
+
+@OData.publish : true
+context REG {
+
+        entity Regulation  {
+                key ID: EPM.BusinessKey;
+                Name: EPM.MString;
+                IsOwned: String(1);
+                toConditionOfUse: Association[*] to ConditionOfUse on toConditionOfUse.RegulationID = ID;
+        };
+
+        entity ApplicationArea  {
+                key ID: EPM.BusinessKey;
+                Description: EPM.MString;
+                toConditionOfUse: Association[*] to ConditionOfUse on toConditionOfUse.ApplicationAreaID = ID;
+        };
+
+        entity ConditionOfUse {
+                key RegulationID: EPM.BusinessKey;
+                key ApplicationAreaID: EPM.BusinessKey;
+                RegulationProp: EPM.MString;
+                ApplicationAreaProp: EPM.MString;
+                LastChangedBy: EPM.SString;
+                LastChangeDate: EPM.SDate;
+                toRegulation: Association to Regulation on toRegulation.ID = RegulationID;
+                toApplicationArea: Association to ApplicationArea on toApplicationArea.ID = ApplicationAreaID;
+                toRegulationChanges: Association[*] to RegulationChange on toRegulationChanges.RegulationID = RegulationID and toRegulationChanges.ApplicationAreaID = ApplicationAreaID;
+                toSubstanceRegulations: Association[*] to SubstanceRegulation on toSubstanceRegulations.RegulationID = RegulationID and toSubstanceRegulations.ApplicationAreaID = ApplicationAreaID;
+                toMaterialUsages: Association[*] to MAT.MaterialUsage on toMaterialUsages.RegulationID = RegulationID and toMaterialUsages.ApplicationAreaID = ApplicationAreaID; 
+                toMaterialRegulationChanges: Association[*] to MaterialRegulationChange on toMaterialRegulationChanges.RegulationID = RegulationID and toMaterialRegulationChanges.ApplicationAreaID = ApplicationAreaID;
+        };
+
+        entity RegulationChange {
+                key RegulationID: EPM.BusinessKey;
+                key ApplicationAreaID: EPM.BusinessKey;
+                key SubstanceID: EPM.BusinessKey;
+                Status: EPM.StatusT;
+                ChangeDate: EPM.SDate;
+                ChangedBy: EPM.SString;
+                NewThreshold: EPM.QuantityT;
+                OldThreshold: EPM.QuantityT;
+                NewUoM: EPM.UnitT;                
+                OldUoM: EPM.UnitT;
+                toConditionOfUse: Association to ConditionOfUse on toConditionOfUse.RegulationID = RegulationID and toConditionOfUse.ApplicationAreaID = ApplicationAreaID;
+                toSubstance: Association to SUB.Substance on toSubstance.ID = SubstanceID;
+                toMaterialRegulationChanges: Association[*] to MaterialRegulationChange on toMaterialRegulationChanges.RegulationID = RegulationID and toMaterialRegulationChanges.ApplicationAreaID = ApplicationAreaID and toMaterialRegulationChanges.SubstanceID = SubstanceID;
+        };
+
+        entity MaterialRegulationChange {
+                key MaterialID: EPM.BusinessKey;
+                key RegulationID: EPM.BusinessKey;
+                key ApplicationAreaID: EPM.BusinessKey;
+                key SubstanceID: EPM.BusinessKey;
+                Status: EPM.StatusT;
+                toConditionOfUse: Association to ConditionOfUse on toConditionOfUse.RegulationID = RegulationID and toConditionOfUse.ApplicationAreaID = ApplicationAreaID;
+                toSubstanceRegulation: Association to SubstanceRegulation on toSubstanceRegulation.RegulationID = RegulationID and toSubstanceRegulation.ApplicationAreaID = ApplicationAreaID and toSubstanceRegulation.SubstanceID = SubstanceID;
+                toRegulationChange: Association to RegulationChange on toRegulationChange.RegulationID = RegulationID and toRegulationChange.ApplicationAreaID = ApplicationAreaID and toRegulationChange.SubstanceID = SubstanceID;
+                toSubstance: Association to SUB.Substance on toSubstance.ID = SubstanceID;
+                toMaterial: Association to MAT.Material on toMaterial.ID = MaterialID;
+                toRequests: Association[*] to REQ.Request on toRequests.MaterialID = MaterialID and toRequests.RegulationID = RegulationID and toRequests.ApplicationAreaID = ApplicationAreaID and toRequests.SubstanceID = SubstanceID;
+        };
+
+        entity SubstanceRegulation {
+                key RegulationID: EPM.BusinessKey;
+                key ApplicationAreaID: EPM.BusinessKey;
+                key SubstanceID: EPM.BusinessKey;
+                Threshold: EPM.QuantityT;
+                UoM: EPM.UnitT;
+                Sign: EPM.SignT;
+                toSubstance: Association to SUB.Substance on toSubstance.ID = SubstanceID;
+                toConditionOfUse: Association to ConditionOfUse on toConditionOfUse.RegulationID = RegulationID and toConditionOfUse.ApplicationAreaID = ApplicationAreaID;
+                toMaterialRegulationChanges: Association[*] to MaterialRegulationChange on toMaterialRegulationChanges.RegulationID = RegulationID and toMaterialRegulationChanges.ApplicationAreaID = ApplicationAreaID and toMaterialRegulationChanges.SubstanceID = SubstanceID;
+        };
+
+};

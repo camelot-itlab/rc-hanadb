@@ -1,0 +1,3 @@
+RegulationID,ApplicationAreaID,SubstanceID,ChangeDate,ChangedBy,NewThreshold,OldThreshold,NewUoM,OldUoM
+EUR,CHILD,0000077-92-9-02,2017-11-01,Michael Jung,1.5,2,%,%
+EUR,CHILD,0000077-92-9-01,2017-09-01,Michael Jung,2,,%,
