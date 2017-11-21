@@ -10,22 +10,40 @@ context REQ {
         entity Request {
                 key BusinessPartnerID: EPM.BusinessKey;
                 key MaterialID: EPM.BusinessKey;
-                key RegulationID: EPM.BusinessKey;
-                key ApplicationAreaID: EPM.BusinessKey;
-                key SubstanceID: EPM.BusinessKey;
-                key RegulationChangeNo: EPM.IntegerT;
-                key MaterialRegulationChangeNo: EPM.IntegerT;
+                key RequestNo: EPM.IntegerT;
                 RequestStatus: EPM.StatusT;
                 RequestDate: EPM.SDate;
                 ResponseDate: EPM.SDate;
                 DueDate: EPM.SDate;
                 Inbound: String(1);
+                toRequestEntries: Association[*] to RequestEntry on toRequestEntries.BusinessPartnerID = BusinessPartnerID and toRequestEntries.MaterialID = MaterialID and toRequestEntries.RequestNo = RequestNo;                
+                toMaterial: Association to MAT.Material on toMaterial.ID = MaterialID;
+                toBusinessPartner: Association to BP.BusinessPartner on toBusinessPartner.ID = BusinessPartnerID;
+                toResponse: Association to Response on toResponse.BusinessPartnerID = BusinessPartnerID and toResponse.MaterialID = MaterialID and toResponse.RequestNo = RequestNo;
+        };
+
+        entity RequestEntry {
+                key BusinessPartnerID: EPM.BusinessKey;
+                key MaterialID: EPM.BusinessKey;
+                key RequestNo: EPM.IntegerT;
+                key RegulationID: EPM.BusinessKey;
+                key ApplicationAreaID: EPM.BusinessKey;
+                key SubstanceID: EPM.BusinessKey;
+                key MaterialRegulationChangeNo: EPM.IntegerT;
+                RegulationChangeNo: EPM.IntegerT;
                 ComplianceStatus: EPM.SString;
+                toRequest: Association to Request on toRequest.BusinessPartnerID = BusinessPartnerID and toRequest.MaterialID = MaterialID and toRequest.RequestNo = RequestNo;
                 toMaterialRegulationChange: Association to REG.MaterialRegulationChange on toMaterialRegulationChange.RegulationID = RegulationID and toMaterialRegulationChange.ApplicationAreaID = ApplicationAreaID and toMaterialRegulationChange.SubstanceID = SubstanceID and toMaterialRegulationChange.MaterialRegulationChangeNo = MaterialRegulationChangeNo;
                 toRegulationChange: Association to REG.RegulationChange on toRegulationChange.RegulationID = RegulationID and toRegulationChange.ApplicationAreaID = ApplicationAreaID and toRegulationChange.SubstanceID = SubstanceID and toRegulationChange.RegulationChangeNo = RegulationChangeNo;
                 toSubstance: Association to SUB.Substance on toSubstance.ID = SubstanceID;
-                toMaterial: Association to MAT.Material on toMaterial.ID = MaterialID;
-                toBusinessPartner: Association to BP.BusinessPartner on toBusinessPartner.ID = BusinessPartnerID;
         };
+
+        entity Response {
+                key BusinessPartnerID: EPM.BusinessKey;
+                key MaterialID: EPM.BusinessKey;
+                key RequestNo: EPM.IntegerT;
+                toComposition: Association[*] to COM.Composition on toComposition.MaterialID = MaterialID;
+                toRequest: Association to Request on toRequest.BusinessPartnerID = BusinessPartnerID and toRequest.MaterialID = MaterialID and toRequest.RequestNo = RequestNo;
+        }
 
 };
