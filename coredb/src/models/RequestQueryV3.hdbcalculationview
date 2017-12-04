@@ -1,0 +1,2188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="bcrc.ipdci.coredb.data.models::RequestQuery" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="RequestQuery"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="REQ.Request">
+    <resourceUri>REQ.Request</resourceUri>
+  </DataSource>
+  <DataSource id="REQ.Response">
+    <resourceUri>REQ.Response</resourceUri>
+  </DataSource>
+  <DataSource id="REG.ApplicationArea">
+    <resourceUri>REG.ApplicationArea</resourceUri>
+  </DataSource>
+  <DataSource id="REG.Regulation">
+    <resourceUri>REG.Regulation</resourceUri>
+  </DataSource>
+  <DataSource id="MAT.Material">
+    <resourceUri>MAT.Material</resourceUri>
+  </DataSource>
+  <DataSource id="MAT.ProductFamily">
+    <resourceUri>MAT.ProductFamily</resourceUri>
+  </DataSource>
+  <DataSource id="SUB.Substance">
+    <resourceUri>SUB.Substance</resourceUri>
+  </DataSource>
+  <DataSource id="REG.RegulationChange">
+    <resourceUri>REG.RegulationChange</resourceUri>
+  </DataSource>
+  <DataSource id="REG.MaterialRegulationChange">
+    <resourceUri>REG.MaterialRegulationChange</resourceUri>
+  </DataSource>
+  <DataSource id="BP.BusinessPartner">
+    <resourceUri>BP.BusinessPartner</resourceUri>
+  </DataSource>
+  <DataSource id="BP.BusinessPartnerMaterial">
+    <resourceUri>BP.BusinessPartnerMaterial</resourceUri>
+  </DataSource>
+  <DataSource id="REG.SubstanceRegulation">
+    <resourceUri>REG.SubstanceRegulation</resourceUri>
+  </DataSource>
+  <DataSource id="COM.Composition">
+    <resourceUri>COM.Composition</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Request">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RequestStatus">
+        <descriptions defaultDescription="RequestStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDate">
+        <descriptions defaultDescription="RequestDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDueDate">
+        <descriptions defaultDescription="DueDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestInbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="REQ.Request">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestStatus" source="RequestStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDate" source="RequestDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDueDate" source="DueDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestInbound" source="Inbound"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Response">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseDate">
+        <descriptions defaultDescription="ResponseDate"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseQuantity">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="REQ.Response">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseQuantity" source="Quantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseUoM" source="UoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseComplianceStatus" source="ComplianceStatus"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ApplicationArea">
+    <viewAttributes>
+      <viewAttribute id="ApplicationAreaDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute></viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="REG.ApplicationArea">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="Description"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Regulation">
+    <viewAttributes>
+      <viewAttribute id="RegulationName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+    
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute></viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="REG.Regulation">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationIsOwned" source="IsOwned"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Material">
+    <viewAttributes>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyID">
+        <descriptions defaultDescription="ProductFamilyID"/>
+      </viewAttribute>
+      <viewAttribute id="SupplyType">
+        <descriptions defaultDescription="SupplyType"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="MAT.Material">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialDescription" source="Description"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ProductFamilyID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SupplyType" source="SupplyType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialComplianceStatus" source="ComplianceStatus"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ProductFamily">
+    <viewAttributes>
+      <viewAttribute id="ProductFamilyName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+    
+      <viewAttribute id="ProductFamilyID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute></viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="MAT.ProductFamily">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyName" source="Name"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Substance">
+    <viewAttributes>
+      <viewAttribute id="CAS">
+        <descriptions defaultDescription="CAS"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+    
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute></viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="SUB.Substance">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CAS" source="CAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceName" source="Name"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="RegulationChange">
+    <viewAttributes>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeChangeDate">
+        <descriptions defaultDescription="ChangeDate"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeChangedBy">
+        <descriptions defaultDescription="ChangedBy"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNewThreshold" aggregationType="sum">
+        <descriptions defaultDescription="NewThreshold"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeOldThreshold" aggregationType="sum">
+        <descriptions defaultDescription="OldThreshold"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNewUoM">
+        <descriptions defaultDescription="NewUoM"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeOldUoM">
+        <descriptions defaultDescription="OldUoM"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="REG.RegulationChange">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeComplianceStatus" source="ComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeChangeDate" source="ChangeDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeChangedBy" source="ChangedBy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNewThreshold" source="NewThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeOldThreshold" source="OldThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNewUoM" source="NewUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeOldUoM" source="OldUoM"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="MaterialRegulationChange">
+    <viewAttributes>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeChangeDate">
+        <descriptions defaultDescription="ChangeDate"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeChangedBy">
+        <descriptions defaultDescription="ChangedBy"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeNewThreshold">
+        <descriptions defaultDescription="NewThreshold"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeOldThreshold">
+        <descriptions defaultDescription="OldThreshold"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeNewUoM">
+        <descriptions defaultDescription="NewUoM"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeOldUoM">
+        <descriptions defaultDescription="OldUoM"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="REG.MaterialRegulationChange">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeComplianceStatus" source="ComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeChangeDate" source="ChangeDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeChangedBy" source="ChangedBy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeNewThreshold" source="NewThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeOldThreshold" source="OldThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeNewUoM" source="NewUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeOldUoM" source="OldUoM"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BusinessPartner">
+    <viewAttributes>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="BP.BusinessPartner">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="Email"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerIsOwned" source="IsOwned"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BusinessPartnerMaterial">
+    <viewAttributes>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute></viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="BP.BusinessPartnerMaterial">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerComplianceStatus" source="ComplianceStatus"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="SubstanceRegulation">
+    <viewAttributes>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationThreshold" aggregationType="sum">
+        <descriptions defaultDescription="Threshold"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationSign">
+        <descriptions defaultDescription="Sign"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="REG.SubstanceRegulation">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationThreshold" source="Threshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationUoM" source="UoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationSign" source="Sign"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Composition">
+    <viewAttributes>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionType">
+        <descriptions defaultDescription="Type"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionQuantity" aggregationType="sum">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="COM.Composition">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionType" source="Type"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionQuantity" source="Quantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionUoM" source="UoM"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RequestStatus">
+        <descriptions defaultDescription="RequestStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDate">
+        <descriptions defaultDescription="RequestDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDueDate">
+        <descriptions defaultDescription="DueDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestInbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseDate">
+        <descriptions defaultDescription="ResponseDate"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseQuantity">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Request">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestStatus" source="RequestStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDate" source="RequestDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDueDate" source="RequestDueDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestInbound" source="RequestInbound"/>
+    </input>
+    <input node="Response">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseQuantity" source="ResponseQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseUoM" source="ResponseUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseComplianceStatus" source="ResponseComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+    </input>
+    <joinAttribute name="RequestID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RequestStatus">
+        <descriptions defaultDescription="RequestStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDate">
+        <descriptions defaultDescription="RequestDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDueDate">
+        <descriptions defaultDescription="DueDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestInbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseDate">
+        <descriptions defaultDescription="ResponseDate"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseQuantity">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestStatus" source="RequestStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDate" source="RequestDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDueDate" source="RequestDueDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestInbound" source="RequestInbound"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseQuantity" source="ResponseQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseUoM" source="ResponseUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseComplianceStatus" source="ResponseComplianceStatus"/>
+    </input>
+    <input node="ApplicationArea">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+    </input>
+    <joinAttribute name="ApplicationAreaID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyID">
+        <descriptions defaultDescription="ProductFamilyID"/>
+      </viewAttribute>
+      <viewAttribute id="SupplyType">
+        <descriptions defaultDescription="SupplyType"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Material">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialDescription" source="MaterialDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ProductFamilyID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SupplyType" source="SupplyType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialComplianceStatus" source="MaterialComplianceStatus"/>
+    </input>
+    <input node="ProductFamily">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyName" source="ProductFamilyName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ProductFamilyID"/>
+    </input>
+    <joinAttribute name="ProductFamilyID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RequestStatus">
+        <descriptions defaultDescription="RequestStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDate">
+        <descriptions defaultDescription="RequestDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDueDate">
+        <descriptions defaultDescription="DueDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestInbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseDate">
+        <descriptions defaultDescription="ResponseDate"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseQuantity">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestStatus" source="RequestStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDate" source="RequestDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDueDate" source="RequestDueDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestInbound" source="RequestInbound"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseQuantity" source="ResponseQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseUoM" source="ResponseUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseComplianceStatus" source="ResponseComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
+    </input>
+    <input node="Regulation">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="RegulationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationIsOwned" source="RegulationIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+    </input>
+    <joinAttribute name="RegulationID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="C1_N" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerMaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="BusinessPartner">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerIsOwned" source="BusinessPartnerIsOwned"/>
+    </input>
+    <input node="BusinessPartnerMaterial">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialComplianceStatus" source="BusinessPartnerComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+    </input>
+    <joinAttribute name="BusinessPartnerID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyID">
+        <descriptions defaultDescription="ProductFamilyID"/>
+      </viewAttribute>
+      <viewAttribute id="SupplyType">
+        <descriptions defaultDescription="SupplyType"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerMaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialDescription" source="MaterialDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ProductFamilyID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SupplyType" source="SupplyType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialComplianceStatus" source="MaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyName" source="ProductFamilyName"/>
+    </input>
+    <input node="Join_5">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerIsOwned" source="BusinessPartnerIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialComplianceStatus" source="BusinessPartnerMaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+    </input>
+    <joinAttribute name="MaterialID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RequestStatus">
+        <descriptions defaultDescription="RequestStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDate">
+        <descriptions defaultDescription="RequestDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDueDate">
+        <descriptions defaultDescription="DueDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestInbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseDate">
+        <descriptions defaultDescription="ResponseDate"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseQuantity">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyID">
+        <descriptions defaultDescription="ProductFamilyID"/>
+      </viewAttribute>
+      <viewAttribute id="SupplyType">
+        <descriptions defaultDescription="SupplyType"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerMaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_4">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestStatus" source="RequestStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDate" source="RequestDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDueDate" source="RequestDueDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestInbound" source="RequestInbound"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseQuantity" source="ResponseQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseUoM" source="ResponseUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseComplianceStatus" source="ResponseComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="RegulationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationIsOwned" source="RegulationIsOwned"/>
+    </input>
+    <input node="Join_6">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialDescription" source="MaterialDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ProductFamilyID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SupplyType" source="SupplyType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialComplianceStatus" source="MaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyName" source="ProductFamilyName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerIsOwned" source="BusinessPartnerIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialComplianceStatus" source="BusinessPartnerMaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+    </input>
+    <joinAttribute name="MaterialID"/>
+    <joinAttribute name="BusinessPartnerID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_8" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RequestStatus">
+        <descriptions defaultDescription="RequestStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDate">
+        <descriptions defaultDescription="RequestDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDueDate">
+        <descriptions defaultDescription="DueDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestInbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseDate">
+        <descriptions defaultDescription="ResponseDate"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseQuantity">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyID">
+        <descriptions defaultDescription="ProductFamilyID"/>
+      </viewAttribute>
+      <viewAttribute id="SupplyType">
+        <descriptions defaultDescription="SupplyType"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerMaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="CAS">
+        <descriptions defaultDescription="CAS"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_7">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestStatus" source="RequestStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDate" source="RequestDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDueDate" source="RequestDueDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestInbound" source="RequestInbound"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseQuantity" source="ResponseQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseUoM" source="ResponseUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseComplianceStatus" source="ResponseComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="RegulationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationIsOwned" source="RegulationIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialDescription" source="MaterialDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ProductFamilyID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SupplyType" source="SupplyType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialComplianceStatus" source="MaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyName" source="ProductFamilyName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerIsOwned" source="BusinessPartnerIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialComplianceStatus" source="BusinessPartnerMaterialComplianceStatus"/>
+    </input>
+    <input node="Substance">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CAS" source="CAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceName" source="SubstanceName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+    </input>
+    <joinAttribute name="SubstanceID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_9" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RequestStatus">
+        <descriptions defaultDescription="RequestStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDate">
+        <descriptions defaultDescription="RequestDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDueDate">
+        <descriptions defaultDescription="DueDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestInbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseDate">
+        <descriptions defaultDescription="ResponseDate"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseQuantity">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyID">
+        <descriptions defaultDescription="ProductFamilyID"/>
+      </viewAttribute>
+      <viewAttribute id="SupplyType">
+        <descriptions defaultDescription="SupplyType"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerMaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="CAS">
+        <descriptions defaultDescription="CAS"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionType">
+        <descriptions defaultDescription="Type"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionQuantity" aggregationType="sum">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_8">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestStatus" source="RequestStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDate" source="RequestDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDueDate" source="RequestDueDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestInbound" source="RequestInbound"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseQuantity" source="ResponseQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseUoM" source="ResponseUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseComplianceStatus" source="ResponseComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="RegulationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationIsOwned" source="RegulationIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialDescription" source="MaterialDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ProductFamilyID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SupplyType" source="SupplyType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialComplianceStatus" source="MaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyName" source="ProductFamilyName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerIsOwned" source="BusinessPartnerIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialComplianceStatus" source="BusinessPartnerMaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CAS" source="CAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceName" source="SubstanceName"/>
+    </input>
+    <input node="Composition">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionType" source="CompositionType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionQuantity" source="CompositionQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionUoM" source="CompositionUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+    </input>
+    <joinAttribute name="SubstanceID"/>
+    <joinAttribute name="MaterialID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_10" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RequestStatus">
+        <descriptions defaultDescription="RequestStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDate">
+        <descriptions defaultDescription="RequestDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDueDate">
+        <descriptions defaultDescription="DueDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestInbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseDate">
+        <descriptions defaultDescription="ResponseDate"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseQuantity">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyID">
+        <descriptions defaultDescription="ProductFamilyID"/>
+      </viewAttribute>
+      <viewAttribute id="SupplyType">
+        <descriptions defaultDescription="SupplyType"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerMaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="CAS">
+        <descriptions defaultDescription="CAS"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionType">
+        <descriptions defaultDescription="Type"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionQuantity" aggregationType="sum">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationThreshold" aggregationType="sum">
+        <descriptions defaultDescription="Threshold"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationSign">
+        <descriptions defaultDescription="Sign"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_9">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestStatus" source="RequestStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDate" source="RequestDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDueDate" source="RequestDueDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestInbound" source="RequestInbound"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseQuantity" source="ResponseQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseUoM" source="ResponseUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseComplianceStatus" source="ResponseComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="RegulationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationIsOwned" source="RegulationIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialDescription" source="MaterialDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ProductFamilyID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SupplyType" source="SupplyType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialComplianceStatus" source="MaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyName" source="ProductFamilyName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerIsOwned" source="BusinessPartnerIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialComplianceStatus" source="BusinessPartnerMaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CAS" source="CAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceName" source="SubstanceName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionType" source="CompositionType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionQuantity" source="CompositionQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionUoM" source="CompositionUoM"/>
+    </input>
+    <input node="SubstanceRegulation">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationThreshold" source="SubstanceRegulationThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationUoM" source="SubstanceRegulationUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationSign" source="SubstanceRegulationSign"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+    </input>
+    <joinAttribute name="RegulationID"/>
+    <joinAttribute name="ApplicationAreaID"/>
+    <joinAttribute name="SubstanceID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_11" cardinality="C1_N" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RequestStatus">
+        <descriptions defaultDescription="RequestStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDate">
+        <descriptions defaultDescription="RequestDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDueDate">
+        <descriptions defaultDescription="DueDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestInbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseDate">
+        <descriptions defaultDescription="ResponseDate"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseQuantity">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyID">
+        <descriptions defaultDescription="ProductFamilyID"/>
+      </viewAttribute>
+      <viewAttribute id="SupplyType">
+        <descriptions defaultDescription="SupplyType"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerMaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="CAS">
+        <descriptions defaultDescription="CAS"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionType">
+        <descriptions defaultDescription="Type"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionQuantity" aggregationType="sum">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationThreshold" aggregationType="sum">
+        <descriptions defaultDescription="Threshold"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationSign">
+        <descriptions defaultDescription="Sign"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo_1">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeChangeDate">
+        <descriptions defaultDescription="ChangeDate"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeChangedBy">
+        <descriptions defaultDescription="ChangedBy"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNewThreshold" aggregationType="sum">
+        <descriptions defaultDescription="NewThreshold"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeOldThreshold" aggregationType="sum">
+        <descriptions defaultDescription="OldThreshold"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNewUoM">
+        <descriptions defaultDescription="NewUoM"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeOldUoM">
+        <descriptions defaultDescription="OldUoM"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_10">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestStatus" source="RequestStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDate" source="RequestDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDueDate" source="RequestDueDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestInbound" source="RequestInbound"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseQuantity" source="ResponseQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseUoM" source="ResponseUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseComplianceStatus" source="ResponseComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="RegulationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationIsOwned" source="RegulationIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialDescription" source="MaterialDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ProductFamilyID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SupplyType" source="SupplyType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialComplianceStatus" source="MaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyName" source="ProductFamilyName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerIsOwned" source="BusinessPartnerIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialComplianceStatus" source="BusinessPartnerMaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CAS" source="CAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceName" source="SubstanceName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionType" source="CompositionType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionQuantity" source="CompositionQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionUoM" source="CompositionUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationThreshold" source="SubstanceRegulationThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationUoM" source="SubstanceRegulationUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationSign" source="SubstanceRegulationSign"/>
+    </input>
+    <input node="RegulationChange">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo_1" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeComplianceStatus" source="RegulationChangeComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeChangeDate" source="RegulationChangeChangeDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeChangedBy" source="RegulationChangeChangedBy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNewThreshold" source="RegulationChangeNewThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeOldThreshold" source="RegulationChangeOldThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNewUoM" source="RegulationChangeNewUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeOldUoM" source="RegulationChangeOldUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+    </input>
+    <joinAttribute name="RegulationID"/>
+    <joinAttribute name="ApplicationAreaID"/>
+    <joinAttribute name="SubstanceID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_12" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="RequestID">
+        <descriptions defaultDescription="RequestID"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerID">
+        <descriptions defaultDescription="BusinessPartnerID"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialID">
+        <descriptions defaultDescription="MaterialID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationID">
+        <descriptions defaultDescription="RegulationID"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaID">
+        <descriptions defaultDescription="ApplicationAreaID"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceID">
+        <descriptions defaultDescription="SubstanceID"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RequestStatus">
+        <descriptions defaultDescription="RequestStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDate">
+        <descriptions defaultDescription="RequestDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestDueDate">
+        <descriptions defaultDescription="DueDate"/>
+      </viewAttribute>
+      <viewAttribute id="RequestInbound">
+        <descriptions defaultDescription="Inbound"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseDate">
+        <descriptions defaultDescription="ResponseDate"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseQuantity">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="ResponseComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ApplicationAreaDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialDescription">
+        <descriptions defaultDescription="Description"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyID">
+        <descriptions defaultDescription="ProductFamilyID"/>
+      </viewAttribute>
+      <viewAttribute id="SupplyType">
+        <descriptions defaultDescription="SupplyType"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="ProductFamilyName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerEmail">
+        <descriptions defaultDescription="Email"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerIsOwned">
+        <descriptions defaultDescription="IsOwned"/>
+      </viewAttribute>
+      <viewAttribute id="BusinessPartnerMaterialComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="CAS">
+        <descriptions defaultDescription="CAS"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceName">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionType">
+        <descriptions defaultDescription="Type"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionQuantity" aggregationType="sum">
+        <descriptions defaultDescription="Quantity"/>
+      </viewAttribute>
+      <viewAttribute id="CompositionUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationThreshold" aggregationType="sum">
+        <descriptions defaultDescription="Threshold"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationUoM">
+        <descriptions defaultDescription="UoM"/>
+      </viewAttribute>
+      <viewAttribute id="SubstanceRegulationSign">
+        <descriptions defaultDescription="Sign"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNo_1">
+        <descriptions defaultDescription="RegulationChangeNo"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeChangeDate">
+        <descriptions defaultDescription="ChangeDate"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeChangedBy">
+        <descriptions defaultDescription="ChangedBy"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNewThreshold" aggregationType="sum">
+        <descriptions defaultDescription="NewThreshold"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeOldThreshold" aggregationType="sum">
+        <descriptions defaultDescription="OldThreshold"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeNewUoM">
+        <descriptions defaultDescription="NewUoM"/>
+      </viewAttribute>
+      <viewAttribute id="RegulationChangeOldUoM">
+        <descriptions defaultDescription="OldUoM"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeComplianceStatus">
+        <descriptions defaultDescription="ComplianceStatus"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeChangeDate">
+        <descriptions defaultDescription="ChangeDate"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeChangedBy">
+        <descriptions defaultDescription="ChangedBy"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeNewThreshold">
+        <descriptions defaultDescription="NewThreshold"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeOldThreshold">
+        <descriptions defaultDescription="OldThreshold"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeNewUoM">
+        <descriptions defaultDescription="NewUoM"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialRegulationChangeOldUoM">
+        <descriptions defaultDescription="OldUoM"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_11">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestID" source="RequestID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerID" source="BusinessPartnerID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestStatus" source="RequestStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDate" source="RequestDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestDueDate" source="RequestDueDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RequestInbound" source="RequestInbound"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseDate" source="ResponseDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseQuantity" source="ResponseQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseUoM" source="ResponseUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ResponseComplianceStatus" source="ResponseComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaDescription" source="ApplicationAreaDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationName" source="RegulationName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationIsOwned" source="RegulationIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialDescription" source="MaterialDescription"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyID" source="ProductFamilyID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SupplyType" source="SupplyType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialComplianceStatus" source="MaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductFamilyName" source="ProductFamilyName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerName" source="BusinessPartnerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerEmail" source="BusinessPartnerEmail"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerIsOwned" source="BusinessPartnerIsOwned"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BusinessPartnerMaterialComplianceStatus" source="BusinessPartnerMaterialComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CAS" source="CAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceName" source="SubstanceName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionType" source="CompositionType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionQuantity" source="CompositionQuantity"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompositionUoM" source="CompositionUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationThreshold" source="SubstanceRegulationThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationUoM" source="SubstanceRegulationUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceRegulationSign" source="SubstanceRegulationSign"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo_1" source="RegulationChangeNo_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeComplianceStatus" source="RegulationChangeComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeChangeDate" source="RegulationChangeChangeDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeChangedBy" source="RegulationChangeChangedBy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNewThreshold" source="RegulationChangeNewThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeOldThreshold" source="RegulationChangeOldThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNewUoM" source="RegulationChangeNewUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeOldUoM" source="RegulationChangeOldUoM"/>
+    </input>
+    <input node="MaterialRegulationChange">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeComplianceStatus" source="MaterialRegulationChangeComplianceStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeChangeDate" source="MaterialRegulationChangeChangeDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeChangedBy" source="MaterialRegulationChangeChangedBy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeNewThreshold" source="MaterialRegulationChangeNewThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeOldThreshold" source="MaterialRegulationChangeOldThreshold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeNewUoM" source="MaterialRegulationChangeNewUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialRegulationChangeOldUoM" source="MaterialRegulationChangeOldUoM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialID" source="MaterialID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationID" source="RegulationID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ApplicationAreaID" source="ApplicationAreaID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SubstanceID" source="SubstanceID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RegulationChangeNo" source="RegulationChangeNo"/>
+    </input>
+    <joinAttribute name="MaterialID"/>
+    <joinAttribute name="RegulationID"/>
+    <joinAttribute name="ApplicationAreaID"/>
+    <joinAttribute name="SubstanceID"/>
+    <joinAttribute name="RegulationChangeNo"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_12">
+  <attributes>
+    <attribute id="RequestID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RequestID"/>
+      <keyMapping columnObjectName="Join_12" columnName="RequestID"/>
+    </attribute>
+    <attribute id="BusinessPartnerID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BusinessPartnerID"/>
+      <keyMapping columnObjectName="Join_12" columnName="BusinessPartnerID"/>
+    </attribute>
+    <attribute id="MaterialID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MaterialID"/>
+      <keyMapping columnObjectName="Join_12" columnName="MaterialID"/>
+    </attribute>
+    <attribute id="RegulationID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RegulationID"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationID"/>
+    </attribute>
+    <attribute id="ApplicationAreaID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ApplicationAreaID"/>
+      <keyMapping columnObjectName="Join_12" columnName="ApplicationAreaID"/>
+    </attribute>
+    <attribute id="SubstanceID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SubstanceID"/>
+      <keyMapping columnObjectName="Join_12" columnName="SubstanceID"/>
+    </attribute>
+    <attribute id="RegulationChangeNo" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RegulationChangeNo"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationChangeNo"/>
+    </attribute>
+    <attribute id="RequestStatus" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RequestStatus"/>
+      <keyMapping columnObjectName="Join_12" columnName="RequestStatus"/>
+    </attribute>
+    <attribute id="RequestDate" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RequestDate"/>
+      <keyMapping columnObjectName="Join_12" columnName="RequestDate"/>
+    </attribute>
+    <attribute id="RequestDueDate" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DueDate"/>
+      <keyMapping columnObjectName="Join_12" columnName="RequestDueDate"/>
+    </attribute>
+    <attribute id="RequestInbound" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Inbound"/>
+      <keyMapping columnObjectName="Join_12" columnName="RequestInbound"/>
+    </attribute>
+    <attribute id="ResponseDate" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ResponseDate"/>
+      <keyMapping columnObjectName="Join_12" columnName="ResponseDate"/>
+    </attribute>
+    <attribute id="ResponseQuantity" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Quantity"/>
+      <keyMapping columnObjectName="Join_12" columnName="ResponseQuantity"/>
+    </attribute>
+    <attribute id="ResponseUoM" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UoM"/>
+      <keyMapping columnObjectName="Join_12" columnName="ResponseUoM"/>
+    </attribute>
+    <attribute id="ResponseComplianceStatus" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ComplianceStatus"/>
+      <keyMapping columnObjectName="Join_12" columnName="ResponseComplianceStatus"/>
+    </attribute>
+    <attribute id="ApplicationAreaDescription" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Description"/>
+      <keyMapping columnObjectName="Join_12" columnName="ApplicationAreaDescription"/>
+    </attribute>
+    <attribute id="RegulationName" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Name"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationName"/>
+    </attribute>
+    <attribute id="RegulationIsOwned" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IsOwned"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationIsOwned"/>
+    </attribute>
+    <attribute id="MaterialDescription" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Description"/>
+      <keyMapping columnObjectName="Join_12" columnName="MaterialDescription"/>
+    </attribute>
+    <attribute id="ProductFamilyID" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ProductFamilyID"/>
+      <keyMapping columnObjectName="Join_12" columnName="ProductFamilyID"/>
+    </attribute>
+    <attribute id="SupplyType" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SupplyType"/>
+      <keyMapping columnObjectName="Join_12" columnName="SupplyType"/>
+    </attribute>
+    <attribute id="MaterialComplianceStatus" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ComplianceStatus"/>
+      <keyMapping columnObjectName="Join_12" columnName="MaterialComplianceStatus"/>
+    </attribute>
+    <attribute id="ProductFamilyName" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Name"/>
+      <keyMapping columnObjectName="Join_12" columnName="ProductFamilyName"/>
+    </attribute>
+    <attribute id="BusinessPartnerName" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Name"/>
+      <keyMapping columnObjectName="Join_12" columnName="BusinessPartnerName"/>
+    </attribute>
+    <attribute id="BusinessPartnerEmail" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Email"/>
+      <keyMapping columnObjectName="Join_12" columnName="BusinessPartnerEmail"/>
+    </attribute>
+    <attribute id="BusinessPartnerIsOwned" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IsOwned"/>
+      <keyMapping columnObjectName="Join_12" columnName="BusinessPartnerIsOwned"/>
+    </attribute>
+    <attribute id="BusinessPartnerMaterialComplianceStatus" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ComplianceStatus"/>
+      <keyMapping columnObjectName="Join_12" columnName="BusinessPartnerMaterialComplianceStatus"/>
+    </attribute>
+    <attribute id="CAS" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CAS"/>
+      <keyMapping columnObjectName="Join_12" columnName="CAS"/>
+    </attribute>
+    <attribute id="SubstanceName" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Name"/>
+      <keyMapping columnObjectName="Join_12" columnName="SubstanceName"/>
+    </attribute>
+    <attribute id="CompositionType" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Type"/>
+      <keyMapping columnObjectName="Join_12" columnName="CompositionType"/>
+    </attribute>
+    <attribute id="CompositionQuantity" order="31" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Quantity"/>
+      <keyMapping columnObjectName="Join_12" columnName="CompositionQuantity"/>
+    </attribute>
+    <attribute id="CompositionUoM" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UoM"/>
+      <keyMapping columnObjectName="Join_12" columnName="CompositionUoM"/>
+    </attribute>
+    <attribute id="SubstanceRegulationThreshold" order="33" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Threshold"/>
+      <keyMapping columnObjectName="Join_12" columnName="SubstanceRegulationThreshold"/>
+    </attribute>
+    <attribute id="SubstanceRegulationUoM" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UoM"/>
+      <keyMapping columnObjectName="Join_12" columnName="SubstanceRegulationUoM"/>
+    </attribute>
+    <attribute id="SubstanceRegulationSign" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sign"/>
+      <keyMapping columnObjectName="Join_12" columnName="SubstanceRegulationSign"/>
+    </attribute>
+    <attribute id="RegulationChangeNo_1" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RegulationChangeNo"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationChangeNo_1"/>
+    </attribute>
+    <attribute id="RegulationChangeComplianceStatus" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ComplianceStatus"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationChangeComplianceStatus"/>
+    </attribute>
+    <attribute id="RegulationChangeChangeDate" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ChangeDate"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationChangeChangeDate"/>
+    </attribute>
+    <attribute id="RegulationChangeChangedBy" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ChangedBy"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationChangeChangedBy"/>
+    </attribute>
+    <attribute id="RegulationChangeNewThreshold" order="40" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NewThreshold"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationChangeNewThreshold"/>
+    </attribute>
+    <attribute id="RegulationChangeOldThreshold" order="41" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OldThreshold"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationChangeOldThreshold"/>
+    </attribute>
+    <attribute id="RegulationChangeNewUoM" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NewUoM"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationChangeNewUoM"/>
+    </attribute>
+    <attribute id="RegulationChangeOldUoM" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OldUoM"/>
+      <keyMapping columnObjectName="Join_12" columnName="RegulationChangeOldUoM"/>
+    </attribute>
+    <attribute id="MaterialRegulationChangeComplianceStatus" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ComplianceStatus"/>
+      <keyMapping columnObjectName="Join_12" columnName="MaterialRegulationChangeComplianceStatus"/>
+    </attribute>
+    <attribute id="MaterialRegulationChangeChangeDate" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ChangeDate"/>
+      <keyMapping columnObjectName="Join_12" columnName="MaterialRegulationChangeChangeDate"/>
+    </attribute>
+    <attribute id="MaterialRegulationChangeChangedBy" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ChangedBy"/>
+      <keyMapping columnObjectName="Join_12" columnName="MaterialRegulationChangeChangedBy"/>
+    </attribute>
+    <attribute id="MaterialRegulationChangeNewThreshold" order="47" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NewThreshold"/>
+      <keyMapping columnObjectName="Join_12" columnName="MaterialRegulationChangeNewThreshold"/>
+    </attribute>
+    <attribute id="MaterialRegulationChangeOldThreshold" order="48" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OldThreshold"/>
+      <keyMapping columnObjectName="Join_12" columnName="MaterialRegulationChangeOldThreshold"/>
+    </attribute>
+    <attribute id="MaterialRegulationChangeNewUoM" order="49" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NewUoM"/>
+      <keyMapping columnObjectName="Join_12" columnName="MaterialRegulationChangeNewUoM"/>
+    </attribute>
+    <attribute id="MaterialRegulationChangeOldUoM" order="50" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OldUoM"/>
+      <keyMapping columnObjectName="Join_12" columnName="MaterialRegulationChangeOldUoM"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures>
+    <measure id="RequestCount" order="51" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER">
+      <descriptions defaultDescription="RequestCount"/>
+      <exceptionAggregation>
+        <attribute attributeName="RequestID"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+    <measure id="MaterialCount" order="52" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER">
+      <descriptions defaultDescription="MaterialCount"/>
+      <exceptionAggregation>
+        <attribute attributeName="MaterialID"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="662.8754335162898" y="112"/>
+    
+      <rectangleSize width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Request" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="407.609414919541" y="1496.999989271164"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Response" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="169.60941491954088" y="1496.999989271164"/>
+      <rectangleSize height="30" width="188"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="ApplicationArea" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="1356.9999904632568"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Regulation" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="175.5672372087139" y="1196.9999916553497"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Material" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="880.3730697728341" y="1356.9999904632568"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="ProductFamily" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1070.3730697728342" y="1356.9999904632568"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Substance" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="711.9706714342695" y="916.9999940395355"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="RegulationChange" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="670.8094434574109" y="496.9999976158142"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="MaterialRegulationChange" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="586.6864744437919" y="356.9999988079071"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BusinessPartner" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="500.3730697728341" y="1356.9999904632568"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BusinessPartnerMaterial" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="690.3730697728341" y="1356.9999904632568"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="SubstanceRegulation" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="718.3163897377992" y="636.9999964237213"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Composition" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="909.5307726788694" y="776.9999952316284"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="310.3730697728343" y="1356.9999904632568"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Request" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Response" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="365.56723720871423" y="1196.9999916553497"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="ApplicationArea" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="867.4539807610173" y="1196.9999916553497"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Material" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="ProductFamily" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="342.2339038753809" y="1056.9999928474426"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Regulation" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="598.5702303640305" y="1196.9999916553497"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="BusinessPartner" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="BusinessPartnerMaterial" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="255.9736328125"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="621.9035636973639" y="1056.9999928474426"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="365.5672372087143" y="916.9999940395355"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="688.6373381009362" y="776.9999952316284"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Substance" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="908.3163897377992" y="636.9999964237213"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_8" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Composition" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="367" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_10" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="860.8094434574109" y="496.9999976158142"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_9" modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="SubstanceRegulation" modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="385" y="22"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_11" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="776.6864744437919" y="356.9999988079071"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_10" modelObjectNameSpace="Join_11" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="RegulationChange" modelObjectNameSpace="Join_11" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="398" y="14"/>
+      <rectangleSize width="266.3935546875"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_12" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="662.8754335162898" y="217"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_11" modelObjectNameSpace="Join_12" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="MaterialRegulationChange" modelObjectNameSpace="Join_12" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="369" y="33"/>
+      <rectangleSize width="305.5166015625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
